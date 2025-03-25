@@ -630,31 +630,39 @@
 	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
 	<script>
-		var d = new Date(2025, 3, 10, 17, 0, 0); // April 10, 2025, 5:00 PM (Month index starts from 0)
-	
-		// Default example
-		simplyCountdown('.simply-countdown-one', {
-			year: d.getFullYear(),
-			month: d.getMonth() + 1,
-			day: d.getDate(),
-			hours: d.getHours(),
-			minutes: d.getMinutes(),
-			seconds: d.getSeconds()
-		});
-	
-		// jQuery example
-		$('#simply-countdown-losange').simplyCountdown({
-			year: d.getFullYear(),
-			month: d.getMonth() + 1,
-			day: d.getDate(),
-			hours: d.getHours(),
-			minutes: d.getMinutes(),
-			seconds: d.getSeconds(),
-			enableUtc: false
-		});
+        function getISTTime() {
+            // Convert UTC to IST (UTC + 5:30)
+            let nowUtc = new Date(Date.UTC(2025, 3, 10, 11, 30, 0)); // 5:00 PM IST
+            return nowUtc;
+        }
+
+        var d = getISTTime();
+
+        // Default countdown
+        simplyCountdown('.simply-countdown-one', {
+            year: d.getFullYear(),
+            month: d.getMonth() + 1,
+            day: d.getDate(),
+            hours: d.getHours(),
+            minutes: d.getMinutes(),
+            seconds: d.getSeconds(),
+            enableUtc: false
+        });
+
+        // jQuery countdown
+        $('#simply-countdown-losange').simplyCountdown({
+            year: d.getFullYear(),
+            month: d.getMonth() + 1,
+            day: d.getDate(),
+            hours: d.getHours(),
+            minutes: d.getMinutes(),
+            seconds: d.getSeconds(),
+            enableUtc: false
+        });
+    </script>
 	</script>
+	
 	
 
 	</body>
